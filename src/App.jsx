@@ -1,17 +1,15 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import './App.css'
-import Welcome from './components/Welcome.jsx';
+import MagicClick from './components/MagicClick.jsx';
 import Counter from './components/Counter.jsx';
 
 function App() {
-
-
   const [count, setCount] = useState(0)
   const [magic, setMagic] = useState([])
 
-  const magicClick = () => {
-    setMagic(arr => [...arr, `${arr.length}`])
+  const updateMagic = () => {
+    setMagic(arr => [...arr, `${arr.length}`]);
   }
 
   return (
@@ -32,11 +30,9 @@ function App() {
         <button onClick={() => setCount((count) => count - 1)}>
           -
         </button>
-
-        <input type="button" onClick={ magicClick } value="Update" />
-
-        <div>{magic.map( e =>
-          <div>{ e }</div>
+        <MagicClick updateMagic={updateMagic}></MagicClick>
+        <div>{magic.map(e =>
+          <div key={e}>{e}</div>
         )}
         </div>
       </div>
